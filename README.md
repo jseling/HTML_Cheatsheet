@@ -1,6 +1,6 @@
 HTML Cheatsheet
 
-#Basic structure
+# Basic structure
 
 ```html
 <!DOCTYPE html>
