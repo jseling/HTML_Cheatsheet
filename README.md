@@ -114,12 +114,38 @@ HTML Cheatsheet
 				console.log(error)
 			}			
 
-		}			
+		}	
+		const xhrModern = () => {
+			//https://dev.to/attacomsian/introduction-to-xmlhttprequest-xhr-142j
+			//http://zetcode.com/javascript/xmlhttprequest/
+			
+			const xhr = new XMLHttpRequest()
+			
+			xhr.onload = () => {
+				if (xhr.status == 200) {
+					const data = JSON.parse(xhr.response)				
+					console.log(data);
+					data.forEach(repository => {addRepository(repository)})
+					
+				} else {
+					console.error('Error: ' + xhr.status)
+				}
+			}
+			
+			xhr.onerror = (error) => {
+				console.error(error)
+			}			
+		
+			xhr.open('GET', 'https://api.github.com/users/jersonSeling/repos')
+			xhr.send();
+		}	
+		
 		
 		//axiosAsPromise()
-		//axiosAsAsyncAwait()
+		axiosAsAsyncAwait()
 		//fetchAsPromise()
-		fetchAsAsyncAwait()
+		//fetchAsAsyncAwait()
+		//xhrModern()
 		
 	</script>
   </body>
