@@ -32,7 +32,7 @@ HTML Cheatsheet
   
   <body>
 	<div class='mainDiv'>
-		<h1>GitHub<h1>
+		<h1>GitHub</h1>
 	</div>
 	
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
