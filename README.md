@@ -31,7 +31,7 @@ HTML Cheatsheet
   </head>
   
   <body>
-    <div class='mainDiv'>
+	<div class='mainDiv'>
 		<h1>GitHub<h1>
 	</div>
 	
@@ -60,7 +60,7 @@ HTML Cheatsheet
 			mainDiv.appendChild(newRepository)			
 		}
 
-		const axioxAsPromise = () => {
+		const axiosAsPromise = () => {
 			//const myPromise = axios.get('https://api.github.com/users/jersonSeling/repos')
 			//myPromise.then(...).catch(...)
 		
@@ -74,7 +74,7 @@ HTML Cheatsheet
 			})
 		}
 		
-		const axioxAsAsyncAwait = async () => {
+		const axiosAsAsyncAwait = async () => {
 			const response = await axios.get('https://api.github.com/users/jersonSeling/repos')
 			
 			try
@@ -86,10 +86,40 @@ HTML Cheatsheet
 			{
 				console.log(error)
 			}
-		}		
+		}	
+
+		const fetchAsPromise = () => {
+			fetch('https://api.github.com/users/jersonSeling/repos')
+			.then(response => response.json())
+			.then((data) => {
+				console.log(data)				
+				data.forEach(repository => {addRepository(repository)})						
+			})
+			.catch((error) => {
+				console.log(error)
+			})
+		}	
+
+		const fetchAsAsyncAwait = async () => {
+			const response = await fetch('https://api.github.com/users/jersonSeling/repos')
+			const data = await response.json()
+			
+			try
+			{
+				console.log(data)				
+				data.forEach(repository => {addRepository(repository)})						
+			}
+			catch (error)
+			{
+				console.log(error)
+			}			
+
+		}			
 		
-		//axioxAsPromise()
-		axioxAsAsyncAwait()
+		//axiosAsPromise()
+		//axiosAsAsyncAwait()
+		//fetchAsPromise()
+		fetchAsAsyncAwait()
 		
 	</script>
   </body>
