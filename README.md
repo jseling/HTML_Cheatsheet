@@ -151,3 +151,84 @@ HTML Cheatsheet
   </body>
 </html>
 ```
+
+## Old XMLHTTPRequest
+
+```html
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>JS Cheatcheet</title>
+  </head>
+  
+  <body>
+    <div class = "mainDiv" >
+		<h1>GitHub</h1>
+	</div>
+	
+	<script>
+		const mainDiv = document.querySelector('.mainDiv')
+		
+		var addRepository = function (repository) {				
+			const newRepository = document.createElement('div')
+			const newRepositoryStars = document.createElement('p')
+			const newRepositoryLink = document.createElement('a')			
+			
+			newRepository.textContent  = repository.name
+			
+			newRepositoryStars.textContent  = 'Stars: ' + repository.stargazers_count
+			
+			newRepositoryLink.textContent = 'Link'
+			newRepositoryLink.href = repository.html_url			
+			
+			newRepository.appendChild(newRepositoryStars)
+			newRepository.appendChild(newRepositoryLink)
+			
+			mainDiv.appendChild(newRepository)			
+		}
+		
+		var xhrOld = function(){
+			//http://www.linhadecodigo.com.br/artigo/922/o-objeto-xmlhttprequest.aspx
+			
+			var getXHR = function() {
+				if (window.XMLHttpRequest){
+					console.log("XHR Native");
+					return new XMLHttpRequest() //Opera, FireFox, IE 10+, etc
+				} else {
+					console.log("XHR ActiveX Object");
+					return new ActiveXObject("Microsoft.XMLHTTP") //IE < 10
+				}
+			
+			}
+			
+			const xhr = getXHR()
+			
+			xhr.onreadystatechange = function(){
+				if (xhr.readyState == 4) {
+				
+					//JSON.parse IE 8+ https://caniuse.com/#feat=json
+					//https://stackoverflow.com/questions/1787020/json-object-in-ie6-how/1788251
+					
+					const responseData = JSON.parse(xhr.responseText) 
+					console.log(responseData)
+					
+					for (var i = 0; i < responseData.length; i++){
+						var repository = responseData[i]
+						addRepository(repository)						
+					}
+					
+				}
+			}		
+		
+			xhr.open('GET', 'https://api.github.com/users/jersonSeling/repos', true)
+			xhr.send(null);
+		}
+		
+		xhrOld()		
+
+	</script>
+  </body>
+</html>
+```
