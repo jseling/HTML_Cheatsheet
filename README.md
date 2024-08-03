@@ -61,10 +61,10 @@ HTML Cheatsheet
 		}
 
 		const axiosAsPromise = () => {
-			//const myPromise = axios.get('https://api.github.com/users/jersonSeling/repos')
+			//const myPromise = axios.get('https://api.github.com/users/jSeling/repos')
 			//myPromise.then(...).catch(...)
 		
-			axios.get('https://api.github.com/users/jersonSeling/repos')
+			axios.get('https://api.github.com/users/jSeling/repos')
 			.then((response) => {
 				console.log(response)				
 				response.data.forEach(repository => {addRepository(repository)})						
@@ -75,7 +75,7 @@ HTML Cheatsheet
 		}
 		
 		const axiosAsAsyncAwait = async () => {
-			const response = await axios.get('https://api.github.com/users/jersonSeling/repos')
+			const response = await axios.get('https://api.github.com/users/jSeling/repos')
 			
 			try
 			{
@@ -89,7 +89,7 @@ HTML Cheatsheet
 		}	
 
 		const fetchAsPromise = () => {
-			fetch('https://api.github.com/users/jersonSeling/repos')
+			fetch('https://api.github.com/users/jSeling/repos')
 			.then(response => response.json())
 			.then((data) => {
 				console.log(data)				
@@ -101,7 +101,7 @@ HTML Cheatsheet
 		}	
 
 		const fetchAsAsyncAwait = async () => {
-			const response = await fetch('https://api.github.com/users/jersonSeling/repos')
+			const response = await fetch('https://api.github.com/users/jSeling/repos')
 			const data = await response.json()
 			
 			try
@@ -136,7 +136,7 @@ HTML Cheatsheet
 				console.error(error)
 			}			
 		
-			xhr.open('GET', 'https://api.github.com/users/jersonSeling/repos')
+			xhr.open('GET', 'https://api.github.com/users/jSeling/repos')
 			xhr.send();
 		}	
 		
@@ -222,7 +222,7 @@ HTML Cheatsheet
 				}
 			}		
 		
-			xhr.open('GET', 'https://api.github.com/users/jersonSeling/repos', true)
+			xhr.open('GET', 'https://api.github.com/users/jSeling/repos', true)
 			xhr.send(null);
 		}
 		
